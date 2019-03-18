@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>title</title>
+</head>
+<body>
+<h1>Web View Demo</h1>
+<br>
+<input type="button" value="Say hello"
+       onClick="showAndroidToast('Hello Android!')" />
+<br />
+File Uri: <label id="lbluri">no file uri</label>
+<br />
+<img id="image1" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1540559744981&di=dcf74b42d99aba3b8d1fb491106552d3&imgtype=jpg&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D4223449602%2C2904607269%26fm%3D214%26gp%3D0.jpg" alt="">
+<br />
+<img id="image2" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1540559744981&di=dcf74b42d99aba3b8d1fb491106552d3&imgtype=jpg&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D4223449602%2C2904607269%26fm%3D214%26gp%3D0.jpg" alt="">
+<br />
+File Path: <label id="lblpath">no file path</label>
+<br />
+<input type="button" value="Choose Photo" onClick="choosePhoto()" />
+<br />
+<input type="file" >
+
+<script type="text/javascript">
+        function showAndroidToast(toast) {
+            Android.showToast(toast);
+        }
+
+        <!--????path??-->
+        function setFilePath(file) {
+            document.getElementById('lblpath').innerHTML = file;
+            Android.showToast(file);
+        }
+
+        <!--????uri??-->
+        function setFileUri(uri) {
+            document.getElementById('lbluri').innerHTML = uri;
+            document.getElementById('image1').src ='file://' + uri;
+            Android.showToast(uri);
+        }
+
+         <!--????-->
+        function choosePhoto() {
+            var file = Android.choosePhoto();
+            document.getElementById('image2').src =  file;
+            window.alert("file = " + file);
+        }
+    </script>
+</body>
+</html>
